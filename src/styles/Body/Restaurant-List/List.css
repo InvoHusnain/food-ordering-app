@@ -1,0 +1,11 @@
+.listing-head {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.List-wrapper {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+}
