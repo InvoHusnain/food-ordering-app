@@ -2,8 +2,8 @@ import { Container, Box } from '@mui/material'
 import React from 'react'
 import Card from '../Restaurant-Card/Card'
 import '../../../styles/Body/Restaurant-List/List.css'
+import cardsData from '../../../Data/CardsData'
 
-const array = ['1','2','3','4'];
 const List = () => {
   return (
     <Container>
@@ -11,8 +11,11 @@ const List = () => {
             Top Selling
         </Box>
         <Box className="List-wrapper">
-            {array.map(()=>{
-            return <Card/>
+            {cardsData.map((content)=>{
+            return (<Card
+            title={content.title}
+            description={content.description}
+            price={content.price}/>)
         })}
         </Box>
     </Container>
