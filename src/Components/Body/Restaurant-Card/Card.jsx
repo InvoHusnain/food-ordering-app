@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Food from '../../../assets/Body/Restaurant-Card/food-one.jpg'
-import '../../../styles/Body/Restaurant-Card/Card.css'
+import '../../../styles/Body/Restaurant-Card/Card.scss'
 
 
 const MediaCard = (props) => {
