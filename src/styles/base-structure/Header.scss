@@ -14,4 +14,29 @@
       background: transparent;
     }
   }
+  .profile-cart {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 10px;
+    svg {
+      font-size: 40px;
+    }
+    .cart-wrapper {
+      position: relative;
+      .product-number {
+        position: absolute;
+        background-color: orange;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 2px;
+        color: #000000;
+        top: 22px;
+        right: 0;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 }

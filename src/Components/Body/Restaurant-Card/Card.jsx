@@ -10,9 +10,9 @@ import '../../../styles/Body/Restaurant-Card/Card.scss'
 
 
 const MediaCard = (props) => {
-  const {title, price, description} = props;
+  const {title, price, description, onClick} = props;
   return (
-    <Card sx={{ maxWidth: 280 }} className="card-wrapper">
+    <Card sx={{ maxWidth: "280px", minHeight: "345px" }} className="card-wrapper">
       <CardMedia
         sx={{ height: 140 }}
         image={Food}
@@ -27,7 +27,7 @@ const MediaCard = (props) => {
       </CardContent>
       <CardActions className='card-footer'>
         <Button size="small" className='price'>Rs {price}</Button>
-        <Button size="small" className='bucket'>Add to Bucket</Button>
+        <Button size="small" className='bucket' onClick={onClick}>Add to Bucket</Button>
       </CardActions>
     </Card>
   );

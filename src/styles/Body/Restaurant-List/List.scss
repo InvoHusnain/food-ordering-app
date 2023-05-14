@@ -1,10 +1,16 @@
-.listing-head {
-  font-size: 35px;
-  font-weight: 600;
-}
-
 .List-wrapper {
   display: flex;
   justify-content: center;
-  column-gap: 10px;
+  row-gap: 10px;
+  flex-direction: column;
+  .listing-head {
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .cards-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
 }
