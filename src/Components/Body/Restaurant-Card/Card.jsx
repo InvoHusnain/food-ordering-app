@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Food from '../../../assets/Body/Restaurant-Card/food-one.jpg'
 import '../../../styles/Body/Restaurant-Card/Card.scss'
+// import CardContext from '../../utils/CardContext';
 
 
 const MediaCard = (props) => {
   const {title, price, description, onClick} = props;
+
   return (
     <Card sx={{ maxWidth: "280px", minHeight: "345px" }} className="card-wrapper">
       <CardMedia

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Box, Container} from '@mui/material'
+import React, { useState } from 'react'
+import {Box, Container, Typography} from '@mui/material'
 import Logo from '../../assets/base-structure/Logo.png'
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,7 +9,6 @@ import { useContext } from 'react';
 import CardContext from '../../utils/CardContext';
 // import BasicModal from './BasicModal';
 import Modal from '@mui/material/Modal';
-import Card from '../Body/Restaurant-Card/Card';
 
 const style = {
   position: 'absolute',
@@ -24,11 +23,10 @@ const style = {
 };
 
 const Header = () => {
-    const {searchInput, handleChange, cartItems} = useContext(CardContext);  
-    const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);  
-    return (
+    const {searchInput, handleChange, cartItems, components, open, handleOpen, handleClose} = useContext(CardContext);
+    
+
+  return (
    <Container>
      <Box className="nav-wrapper">
         <Box className="nav-logo">
@@ -49,16 +47,26 @@ const Header = () => {
                 <span className='product-number'>{cartItems}</span>
             </Box>
             <div>
-      <Modal
+      {components.length > 0 ? (<Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Card/>
+          {components}
+          <Typography sx={{color: "black"}}>Quantity = {cartItems}</Typography>
         </Box>
-      </Modal>
+      </Modal> ): <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography sx={{color: "black"}}>No products Selected</Typography>
+        </Box>
+      </Modal>}
     </div>
         </Box>
     </Box>
