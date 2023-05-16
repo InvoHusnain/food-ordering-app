@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import CardContext from '../../utils/CardContext';
 // import BasicModal from './BasicModal';
 import Modal from '@mui/material/Modal';
+import Food from '../../assets/Body/Restaurant-Card/food-one.jpg'
+
 
 const style = {
   position: 'absolute',
@@ -16,14 +18,36 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: '#000000',
   border: '2px solid #000',
-  boxShadow: 24,
+  borderRadius: "10px",
+  boxShadow: "0px 0px 5px 0px rgba(255,255,255,0.75)",
   p: 4,
 };
 
+const productWrapper = {
+  display: "flex",
+  columnGap: "20px",
+  bgcolor: '#251718',
+  border: '2px solid #000',
+};
+
+const productImage = {
+  width: "100px"
+};
+
+const cartHead = {
+  color: "#ffffff",
+  fontSize: "25px"
+};
+
+const cartContent = {
+  color: "white",
+  fontSize: "20px"
+}
+
 const Header = () => {
-    const {searchInput, handleChange, cartItems, components, open, handleOpen, handleClose} = useContext(CardContext);
+    const {searchInput, handleChange, cartItems, open, handleOpen, handleClose, implementCart, totalPrice} = useContext(CardContext);
     
 
   return (
@@ -47,29 +71,43 @@ const Header = () => {
                 <span className='product-number'>{cartItems}</span>
             </Box>
             <div>
-      {components.length > 0 ? (<Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          {components}
-          <Typography sx={{color: "black"}}>Quantity = {cartItems}</Typography>
-        </Box>
-      </Modal> ): <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography sx={{color: "black"}}>No products Selected</Typography>
-        </Box>
-      </Modal>}
-    </div>
-        </Box>
-    </Box>
+              {implementCart.length > 0 ? (
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description">
+                <Box sx={style}>
+                  <Typography sx={cartHead}>Cart</Typography>
+                  {implementCart.map((item) => (
+                  
+                    <Box key={item.id} sx={productWrapper}>
+                      <img style={productImage} src={Food} alt="product-image"/>
+                      <Box>
+                        <Typography sx={cartContent}>{item.title}</Typography>
+                      <Typography sx={cartContent}>{item.price}</Typography>
+                      </Box>
+                    </Box>
+                  
+                  ))}
+                  <Box sx={{display: "flex", justifyContent: 'space-between', alignItems: 'center',}}>
+                    <Typography sx={{background: "orange",color: "black",padding: "5px",marginTop: "10px",borderRadius: "5px"}}>Total Items = {cartItems}</Typography>
+                  <Typography sx={{background: "orange",color: "black",padding: "5px",marginTop: "10px",borderRadius: "5px"}}>Total Price = {totalPrice}</Typography>
+                  </Box>
+                  </Box>
+              </Modal> ) : 
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description">
+                <Box sx={style} >
+                  <Typography sx={{color: "black"}}>No products Selected</Typography>
+                </Box>
+              </Modal>}
+            </div>
+          </Box>
+      </Box>
    </Container>
   )
 }

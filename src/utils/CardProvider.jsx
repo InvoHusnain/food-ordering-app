@@ -2,13 +2,15 @@ import React from 'react'
 import { useState } from 'react';
 import CardContext from './CardContext';
 import cardsData from '../Data/CardsData';
-import Card from '../Components/Body/Restaurant-Card/Card'
 
 const CardProvider = ({children}) => {
   // States
     const [searchInput, setSearchInput] = useState("")
     const [cartItems, setCartItems] = useState(0)
     const [open, setOpen] = useState(false);
+    const [implementCart, setImplementCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    
     
     //Functions 
     const handleOpen = () => setOpen(true);
@@ -16,29 +18,36 @@ const CardProvider = ({children}) => {
     const handleChange = (event) => {
       setSearchInput(event.target.value);
     };
-    const onClick = () =>{
-        setCartItems(()=>cartItems + 1);
-    }
-
+    const addToCart = (content) => {
+      setImplementCart([...implementCart, content]);
+      setCartItems(()=>cartItems + 1);
+      setTotalPrice(()=>totalPrice + content.price);
+    };
+    
     // Method for filter out data
     const dataFilter = searchInput ? cardsData?.filter((item)=>
-      item.title.toLowerCase().includes(searchInput.toLowerCase())
+    item.title.toLowerCase().includes(searchInput.toLowerCase())
     ) : cardsData;
+    
+    // Array
+    const mergedProducts = [...dataFilter, ...implementCart];
 
     // Method to print my Cards in Add to Cart Modal
-    const components = Array.from({ length: cartItems }, (_, index) => <Card key={index} />);
+    // const components = Array.from({ length: cartItems }, (_, index) => <Card key={index} />);
 
     const contextValue = {
         searchInput,
         handleChange,
         dataFilter,
-        onClick,
+        totalPrice,
         cartItems, 
-        components, 
         open, 
         handleClose,
         handleOpen,
-        cardsData
+        cardsData,
+        addToCart,
+        implementCart,
+        mergedProducts
     }
   return (
     <CardContext.Provider value={contextValue}>{children}</CardContext.Provider>
