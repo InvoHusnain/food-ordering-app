@@ -19,8 +19,23 @@
     justify-content: center;
     align-items: baseline;
     column-gap: 10px;
+    position: relative;
     svg {
       font-size: 40px;
+      cursor: pointer;
+    }
+    .logout-wrapper {
+      position: absolute;
+      background: hsla(11, 80%, 31%, 1);
+      top: 40px;
+      left: 0px;
+      padding: 5px 10px;
+      margin: 15px 0px 15px 5px;
+      border-radius: 5px;
+      p {
+        margin: 0;
+        cursor: pointer;
+      }
     }
     .cart-wrapper {
       position: relative;

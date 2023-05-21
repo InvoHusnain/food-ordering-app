@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Box, Container, Typography} from '@mui/material'
 import Logo from '../../assets/base-structure/Logo.png'
 import PersonIcon from '@mui/icons-material/Person';
@@ -7,9 +7,9 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import '../../styles/base-structure/Header.scss'
 import { useContext } from 'react';
 import CardContext from '../../utils/CardContext';
-// import BasicModal from './BasicModal';
 import Modal from '@mui/material/Modal';
 import Food from '../../assets/Body/Restaurant-Card/food-one.jpg'
+import { useState } from 'react';
 
 
 const style = {
@@ -46,10 +46,13 @@ const cartContent = {
   fontSize: "20px"
 }
 
-const Header = () => {
+const Header = (props) => {
     const {searchInput, handleChange, cartItems, open, handleOpen, handleClose, implementCart, totalPrice} = useContext(CardContext);
-    
-
+    const {handleLogout} = props;
+    const [pop, setPop] = useState(false);
+    const handlePop = () =>{
+      setPop(!pop);
+    }
   return (
    <Container>
      <Box className="nav-wrapper">
@@ -65,7 +68,12 @@ const Header = () => {
             onChange={handleChange}/>
         </Box>
         <Box className="profile-cart">
-            <PersonIcon/>
+            <PersonIcon onClick={handlePop}/>
+            {pop ?
+              <Box className="logout-wrapper">
+                <p onClick={handleLogout}>Log Out</p>
+              </Box> : ""
+            }
             <Box className="cart-wrapper">
                 <ShoppingBagIcon onClick={handleOpen}/>
                 <span className='product-number'>{cartItems}</span>
@@ -102,7 +110,7 @@ const Header = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
                 <Box sx={style} >
-                  <Typography sx={{color: "black"}}>No products Selected</Typography>
+                  <Typography sx={{color: "white"}}>No products Selected</Typography>
                 </Box>
               </Modal>}
             </div>

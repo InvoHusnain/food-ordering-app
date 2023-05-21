@@ -1,17 +1,36 @@
-import Header from './Components/base-structure/Header'
-import List from './Components/Body/Restaurant-List/List'
 import './App.css'
-import CardProvider from './utils/CardProvider'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import { useEffect, useState } from 'react'
+import LoginPage from './pages/LoginPage'
 
 
 function App() {
+ const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const handleLogin = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true') 
+  };
+
+  useEffect(()=>{
+    const loggedState = localStorage.getItem('isLoggedIn');
+
+    if(loggedState === 'true'){
+      setIsLoggedIn(true);
+    }
+  }, [])
+
+  const handleLogout = () =>{
+    setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn')
+  }
+
   return (
-    <>
-    <CardProvider>
-      <Header />
-      <List />
-    </CardProvider>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={isLoggedIn ? <MainPage handleLogout={handleLogout}/> : <LoginPage onLogin={handleLogin} />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
