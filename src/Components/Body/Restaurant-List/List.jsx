@@ -21,6 +21,7 @@ const List = () => {
             return (
             <Card
             key= {id}
+            id= {content.id}
             title={content.title}
             description={content.description}
             price={content.price}

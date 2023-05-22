@@ -1,0 +1,24 @@
+.product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .product-head {
+    h3 {
+      font-size: 25px;
+    }
+  }
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    .description {
+      font-size: 20px;
+    }
+  }
+  .product-price {
+    .price {
+      background-color: hsla(11, 80%, 31%, 1);
+      border-radius: 5px;
+    }
+  }
+}

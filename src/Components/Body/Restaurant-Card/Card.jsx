@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,11 +8,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Food from '../../../assets/Body/Restaurant-Card/food-one.jpg'
 import '../../../styles/Body/Restaurant-Card/Card.scss'
-// import CardContext from '../../utils/CardContext';
 
 
 const MediaCard = (props) => {
-  const {title, price, description, onClick} = props;
+  const {id,title, price, description, onClick} = props;
+
 
   return (
     <Card sx={{ maxWidth: "280px", minHeight: "345px" }} className="card-wrapper">
@@ -20,9 +21,11 @@ const MediaCard = (props) => {
         image={Food}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" className='card-content'>
+        <Link to={`/product/${id}`}>
+          <Typography gutterBottom variant="h5" component="div" className='card-content'>
           {title}
         </Typography>
+        </Link>
         <Typography variant="body2" color="text.secondary">
           {description}
         </Typography>

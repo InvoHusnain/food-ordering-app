@@ -1,5 +1,6 @@
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import SingleProduct from './pages/SingleProduct'
 import MainPage from './pages/MainPage'
 import { useEffect, useState } from 'react'
 import LoginPage from './pages/LoginPage'
@@ -29,6 +30,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={isLoggedIn ? <MainPage handleLogout={handleLogout}/> : <LoginPage onLogin={handleLogin} />} />
+        <Route path="/product/:id" element={<SingleProduct/>} />
       </Routes>
     </BrowserRouter>
   )

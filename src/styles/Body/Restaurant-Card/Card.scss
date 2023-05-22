@@ -6,6 +6,12 @@
   justify-content: space-between;
   background-color: #251718 !important;
   border-radius: 5px;
+  a {
+    text-decoration: none !important;
+    &:hover {
+      color: #ffc879 !important;
+    }
+  }
   .card-content {
     display: flex;
     flex-direction: column;
