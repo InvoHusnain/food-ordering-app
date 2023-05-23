@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import { Box,Button } from '@mui/material'
 import '../styles/pages/LoginPage.scss'
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = ({onLogin}) => {
+const LoginPage = ({handleLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate()
     const handleEmailChange = (e) => {
     setEmail(e.target.value);
     };
@@ -20,7 +21,9 @@ const LoginPage = ({onLogin}) => {
     // Dummy authentication logic
     if (email === 'dummy@example.com' && password === 'password') {
       // Authentication successful
-      onLogin();
+      
+      handleLogin();
+      navigate('/')
       
     //  local storage  
         localStorage.setItem('email', email);

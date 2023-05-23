@@ -10,6 +10,7 @@ const SingleProduct = () => {
   return (
     <>
     <Box className="product-wrapper">
+      <Typography variant='h1'>Product Detail</Typography>
       <Box className="product-head">
         <Typography variant='h3'>{Item.title}</Typography>
         <Box className="product-content">

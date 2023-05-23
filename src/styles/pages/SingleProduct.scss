@@ -3,6 +3,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #251718;
+  border-radius: 20px;
+  min-height: 500px;
+  row-gap: 100px;
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 800;
+  }
   .product-head {
     h3 {
       font-size: 25px;
@@ -17,8 +28,10 @@
   }
   .product-price {
     .price {
-      background-color: hsla(11, 80%, 31%, 1);
+      background-color: rgba(255, 166, 0, 0.459);
       border-radius: 5px;
+      max-width: 50px;
+      text-align: center;
     }
   }
 }
