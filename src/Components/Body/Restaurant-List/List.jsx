@@ -7,7 +7,6 @@ import CardContext from '../../../utils/CardContext'
 
 const List = () => {
   const {dataFilter, searchInput, addToCart,mergedProducts} = useContext(CardContext);
-  console.log(mergedProducts, "Husnain")
   return (
     <Container>
         <Box>

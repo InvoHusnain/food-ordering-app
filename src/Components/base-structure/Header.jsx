@@ -23,6 +23,8 @@ const style = {
   borderRadius: "10px",
   boxShadow: "0px 0px 5px 0px rgba(255,255,255,0.75)",
   p: 4,
+  height: '504px',
+  overflow: 'scroll'
 };
 
 const productWrapper = {
@@ -68,7 +70,7 @@ const Header = (props) => {
             onChange={handleChange}/>
         </Box>
         <Box className="profile-cart">
-            <PersonIcon onClick={handlePop}/>
+            <PersonIcon onMouseEnter={handlePop}/>
             {pop ?
               <Box className="logout-wrapper">
                 <p onClick={handleLogout}>Log Out</p>
